@@ -13,6 +13,10 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "flaschenpost": "^5.1.1",
-    "processenv": "^3.0.9"
+    "processenv": "^3.0.9",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.3"
   }
 }
