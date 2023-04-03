@@ -1,8 +1,8 @@
 'use strict';
 
-const crypto = require('crypto');
+import crypto from 'crypto';
 
-const createTodo = ({ description }: { description: string }) => {
+const createTodo = (description: string) => {
   return {
     id: crypto.randomUUID(),
     description,

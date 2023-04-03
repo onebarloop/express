@@ -1,23 +1,23 @@
 'use strict';
 
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
+import { getTodos } from './routes/getTodos';
+import { noteTodo } from './routes/noteTodo';
+import { InMemoryStore } from './store/InMemoryStore';
 const cors = require('cors');
-const { getTodos } = require('./routes/getTodos');
-const { noteTodo } = require('./routes/noteTodo');
-const { InMemoryStore } = require('./store/InMemoryStore');
 
-const getApi = ({ store }: typeof InMemoryStore) => {
+const getApi = (store: InMemoryStore) => {
   const api = express();
 
   api.use(cors());
   api.use(bodyParser.json());
 
   // Commands
-  api.post('/note-todo', noteTodo({ store }));
+  api.post('/note-todo', noteTodo(store));
 
   // Queries
-  api.get('/todos', getTodos({ store }));
+  api.get('/todos', getTodos(store));
 
   return api;
 };

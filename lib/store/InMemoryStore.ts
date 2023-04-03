@@ -1,17 +1,13 @@
 'use strict';
 
 class InMemoryStore {
-  todos!: string[];
+  todos: { id: any; description: string; status: string }[];
 
   constructor() {
-    //not used
-  }
-
-  async initialize() {
     this.todos = [];
   }
 
-  async noteTodo({ todo }: { todo: string }) {
+  async noteTodo(todo: { id: any; description: string; status: string }) {
     this.todos.push(todo);
   }
 

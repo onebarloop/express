@@ -1,19 +1,17 @@
 'use strict';
 
-const http = require('http');
-const { flaschenpost } = require('flaschenpost');
-const { processenv } = require('processenv');
-const { getApi } = require('./lib/getApi');
-const { InMemoryStore } = require('./lib/store/InMemoryStore');
+import http from 'http';
+import { flaschenpost } from 'flaschenpost';
+import { processenv } from 'processenv';
+import { getApi } from './lib/getApi';
+import { InMemoryStore } from './lib/store/InMemoryStore';
 
 (async () => {
   const logger = flaschenpost.getLogger();
 
   const store = new InMemoryStore();
 
-  await store.initialize();
-
-  const api = getApi({ store });
+  const api = getApi(store);
   const server = http.createServer(api);
 
   const port = processenv('PORT', 3000);
