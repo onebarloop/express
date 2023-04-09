@@ -1,19 +1,34 @@
-'use strict';
+"use strict";
+
+interface Todo {
+  id: string;
+  description: string;
+  status: "open" | "closed";
+}
 
 class InMemoryStore {
-  todos: { id: any; description: string; status: string }[];
+  todos: Todo[];
 
   constructor() {
     this.todos = [];
   }
 
-  async noteTodo(todo: { id: any; description: string; status: string }) {
+  async noteTodo(todo: Todo) {
     this.todos.push(todo);
   }
 
   async getRemainingTodos() {
     return this.todos;
   }
-}
 
-export { InMemoryStore };
+  async toggleTodoStatus(id: string) {
+    return (this.todos = this.todos.map((todo): Todo => {
+      if (todo.id === id) {
+        if (todo.status === "open") {
+          return { ...todo, status: "closed" };
+        } else return { ...todo, status: "open" };
+      } else return todo;
+    }));
+  }
+}
+export { InMemoryStore, Todo };
