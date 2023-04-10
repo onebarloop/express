@@ -1,5 +1,3 @@
-'use strict';
-
 import { InMemoryStore } from '../store/InMemoryStore';
 import { Request, Response } from 'express';
 

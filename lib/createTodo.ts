@@ -1,9 +1,7 @@
-'use strict';
-
 import crypto from 'crypto';
 import { Todo } from './store/InMemoryStore';
 
-const createTodo = (description: string):Todo => {
+const createTodo = (description: string): Todo => {
   return {
     id: crypto.randomUUID(),
     description,

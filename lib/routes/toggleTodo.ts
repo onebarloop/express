@@ -1,7 +1,5 @@
-"use strict";
-
-import { Request, Response } from "express";
-import { InMemoryStore, Todo } from "../store/InMemoryStore";
+import { Request, Response } from 'express';
+import { InMemoryStore, Todo } from '../store/InMemoryStore';
 
 const toggleTodo = (store: InMemoryStore) => {
   return async function (req: Request, res: Response) {

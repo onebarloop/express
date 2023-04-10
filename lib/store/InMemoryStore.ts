@@ -1,9 +1,7 @@
-"use strict";
-
 interface Todo {
   id: string;
   description: string;
-  status: "open" | "closed";
+  status: 'open' | 'closed';
 }
 
 class InMemoryStore {
@@ -24,9 +22,9 @@ class InMemoryStore {
   async toggleTodoStatus(id: string) {
     return (this.todos = this.todos.map((todo): Todo => {
       if (todo.id === id) {
-        if (todo.status === "open") {
-          return { ...todo, status: "closed" };
-        } else return { ...todo, status: "open" };
+        if (todo.status === 'open') {
+          return { ...todo, status: 'closed' };
+        } else return { ...todo, status: 'open' };
       } else return todo;
     }));
   }

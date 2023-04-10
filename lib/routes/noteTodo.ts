@@ -1,12 +1,10 @@
-'use strict';
-
 import { createTodo } from '../createTodo';
 import { Request, Response } from 'express';
-import { InMemoryStore } from '../store/InMemoryStore';
+import { InMemoryStore, Todo } from '../store/InMemoryStore';
 
 const noteTodo = (store: InMemoryStore) => {
   return async function (req: Request, res: Response) {
-    const { description } = req.body;
+    const { description }: Todo = req.body;
     const todo = createTodo(description);
 
     await store.noteTodo(todo);
